@@ -1,0 +1,177 @@
+    1  ip link show
+    2  sudo nmci connection modify enp0s ipv4.method manual
+    3  sudo nmcli connection modify enp0s ipv4.method manual
+    4  sudo nmcli connection modify enp0s3 ipv4.method manual
+    5  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.adress 192.168.1.1 ipv4.dns "8.8.8.8"
+    6  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.1.1 ipv4.dns "8.8.8.8"
+    7  sudo nmcli connection down enp0s3 && sudo nmcli connection up enp0s3 
+    8  sudo hostnamectl set-hostname mephi-2026.domain.local
+    9  ip addr show enp0s3 | grep "inet"
+   10  hostnamectl
+   11  ip route | grep default
+   12  nmcli connection show enp0s3
+   13  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.address 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.dns "8.8.8.8"
+   14  sudo nmcli connection down enp0s3
+   15  sudo nmcli connection up enp0s3
+   16  ip addr show enp0s3 | grep "inet"
+   17  ip route | grep default
+   18  ping -c 4 8.8.8.8 > /tmp/network_check.txt
+   19  ping -c 4 192.168.1.1 > /tmp/network_check.txt
+   20  cat/tmp/network_check.txt
+   21  cat /tmp/network_check.txt
+   22  sudo poweroff
+   23  ip addr show enp0s3
+   24  ping -c 2 192.168.1.1
+   25  sudo nmcli connection modify enp0s3 ipv4.method auto
+   26  sudo nmcli connection down enp0s3 $$ sudo nmcli connection up enp0s3
+   27  sudo nmcli connection up enp0s3
+   28  ip addr show enp0s3 | grep "inet "
+   29  ping -c 2 8.8.8.8
+   30  sudo nmcli connection modify enp0s3 ipv4.address "" ipv4.gateway "" ipv4.dns ""
+   31  sudo nmcli connection modify enp0s3 ipv4.method auto
+   32  sudo nmcli connection down enp0s3
+   33  sudo nmcli connection up enp0s3
+   34  ip addr show enp0s3 | grep "inet "
+   35  ping -c 2 8.8.8.8
+   36  rm -f /tmp/network_check.txt
+   37  ping -c 2 8.8.8.8 > /tmp/network_check.txt
+   38  ping -c 4 192.168.0.1 > /tmp/network_check.txt
+   39  cat /tmp/network_check.txt
+   40  ping -c 4 8.8.8.8 > /tmp/network_check.txt
+   41  cat /tmp/network_check.txt
+   42  ping -c 4 192.168.0.1 >> /tmp/network_check.txt
+   43  cat /tmp/network_check.txt
+   44  sudo dnf makecache
+   45  sudo dnf install -y nginx tcpdump libcap-ng-utils
+   46  ngins version: nginx/1.x.x
+   47  nginx version: nginx/1.x.x
+   48  nginx -V
+   49  tcpdump --version
+   50  getcap --help | head -n 3
+   51  dnf download --downloaddir=/tmp tcpdump
+   52  dnf download --downloaddir/tmp tcpdump
+   53  cd /tmp
+   54  dnf download tcpdump
+   55  sudo dnf clean all
+   56  sudo dnf makecache
+   57  dnf download tcpdump
+   58  ls -la tcpdump*.rpm
+   59  sudo rpm -ivh tcpdump*.rpm
+   60  rpm -qa | grep tcpdump
+   61  cp /tmp/tcpdump-4.99.6-2.fc43.x86_64.rpm ~/tcpdump.rpm
+   62  ls -la ~tcpdump.rpm
+   63  ls -la ~/tcpdump.rpm
+   64  lsblk
+   65  sudo fdisk /dev/sdb
+   66  sudo mkfs.ext4 -L MEPHI_DATA /dev/sdb1
+   67  sudo mkdir -p /data/mephi-web
+   68  echo "LABEL=MEPHI_DATA /data/mephi-web ext4 defaults 0 2" | sudo tee -a /etc/fstab
+   69  sudo mount -a
+   70  sudo systemctl daemon-reload
+   71  sudo mount -a
+   72  df -h | grep mephi-web
+   73  sudo systemctl start nginx
+   74  sudo systemctl enable nginx
+   75  systemctl status nginx
+   76  journalctl -u nginx --since "5 minuts ago"
+   77  journalctl -u nginx --since "5 minutes ago"
+   78  journalctl -u nginx --since "10 minutes ago"
+   79  journalctl -u nginx --since "10 minutes ago" > /tmp/nginx_recent_logs.txt
+   80  cat /tmp/nginx_recent_logs.txt
+   81  sudo groupadd mephi-devs && sudo useradd -m -G mephi-devs mephi-admin && sudo passwd mephi-admin
+   82  sudo chown mephi-admin:mephi-devs /data/mephi-web $$ sudo chmod 2775 /data/mephi/web $$ ls -ld /data/mephi-web
+   83  sudo chown mephi-admin:mephi-devs /data/mephi-web $$ sudo chmod 2775 /data/mephi-web $$ ls -ld /data/mephi-web
+   84  sudo chown mephi-admin:mephi-devs /data/mephi-web
+   85  sudo chmod 2775 /data/mephi-web $$ ls -ld /data/mephi-web
+   86  sudo chmod 2775 /data/mephi-web 
+   87  ls -ld /data/mephi-web
+   88  id mephi-admin
+   89  getent group mephi-devs
+   90  getenforce
+   91  sudo semanage fcontext -a -t httpd_sys_content_t "/data/mephi-web(/.*)?"
+   92  sudo restorecon -Rv /data/mephi-web
+   93  ls -Zd /data/mephi-web
+   94  ls -la /usr/sbin/tcpdump
+   95  sudo setcap cap_net_raw,cap_net_admin+ep /usr/sbin/tcpdump
+   96  getcap /usr/sbin/tcpdump
+   97  sudo -u mephi-admin tcpdump --help
+   98  echo "root" | sudo tee /etc/ssh/denied_users
+   99  sudo nano /etc/pam.d/login
+  100  sudo dnf install -y nano
+  101  sudo nano /etc/pam.d/login
+  102  sudo nano /etc/pam.d/sshd
+  103  sudo grep "UsePAM" /etc/ssh/sshd_config
+  104  sudo sed -i 's/^#UsePAM no/UsePAM yes/' /etc/ssh/sshd_config
+  105  sudo sed -i 's/^UsePAM no/UsePAM yes/' /etc/ssh/sshd_config
+  106  sudo grep "UsePAM" /etc/ssh/sshd_config
+  107  echo "auth required pam_listfile.so item=user sense=deny file=/etc/ssh/denied_users onerr-succeed" | sudo tee /tmp/pam_line.txt
+  108  cat /tmp/pam_line.txt /etc/pam.d/login |sudo tee /etc/pam.d/login.new
+  109  sudo nano /etc/pam.d/login
+  110  grep pam_listfile /etc/pam.d/login
+  111  ls -la /etc/pam.d/login*
+  112  cat /etc/pam.d/login.new 2>/dev/null
+  113  sudo nano /etc/pam.d/login.new
+  114  sudo systemctl restart sshd
+  115  su - root
+  116  cat /etc/ssh/denied_users
+  117  head -n 3 /etc/pam.d/login
+  118  sudo nano /etc/pam.d/su
+  119  su - root
+  120  echo "Hello fom Student: M2551033" | sudo tee /data/mephi-web/index.html
+  121  cat /data/mephi-web/index.html
+  122  curl http://localhost
+  123  curl http://192.168.0.255
+  124  sudo systemctl status nginx | grep Active
+  125  sudo ss /tlnp | grep nginx
+  126  sudo ss -tlnp | grep nginx
+  127  sudo nano /etc/nginx/nginx.conf
+  128  sudo systemctl restart nginx
+  129  sudo ss -tlnp | grep :80
+  130  curl http://localhost
+  131  curl http://192.168.0.255
+  132  ip addr show enp0s3 | grep "inet "
+  133  sudo systemctl status firewalld
+  134  sudo firewall-cmd --permanent --add-service=http
+  135  sudo firewall-cmd --permanent --add-service=https
+  136  sudo firewall-cmd --reload
+  137  curl http://192.168.0.255
+  138  sudo firewall-cmd --list-services
+  139  curl http://192.168.0.232
+  140  sudo ncli connection modify enp0s3 ipv4.method manual ipv4.gateway 192.168.0.1 ipv4.dns "8.8.8.8"
+  141  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.gateway 192.168.0.1 ipv4.dns "8.8.8.8"
+  142  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.addresses 192/168/0/100/24 ipv4.gateway 192.168.0.1 ipv4.dns "8.8.8.8"
+  143  sudo nmcli connection modify enp0s3 ipv4.method manual ipv4.addresses 192.168.0.100/24 ipv4.gateway 192.168.0.1 ipv4.dns "8.8.8.8"
+  144  sudo nmcli connection down enp0s3
+  145  sudo nmcli connection up enp0s3
+  146  ip addr show enp0s3 | grep "inet "
+  147  ping -c 2 8.8.8.8
+  148  curl http://192.168.0.100
+  149  curl http://localhost
+  150  curl -s http://localhost > ~/curl_output.txt
+  151  cat ~/curl_output.txt
+  152  sudo dnf install -y git
+  153  ls -la ~/.ssh
+  154  ssh-keygen -t ad25519 -C "rebecca.castle2000@gmail.com" 
+  155  ssh-keygen -t ed25519 -C "rebecca.castle2000@gmail.com" 
+  156  cat ~/.ssh/id_ed25519.pub
+  157  cat ~/.ssh/id_ed25519.pub.pub
+  158  cat ~/.ssh/.pub
+  159  ls -la ~/.ssh/
+  160  cat ~/.ssh/id_ed25519/.pub
+  161  mkdir -p ~/.ssh
+  162  chmod 700 ~/.ssh
+  163  ssh-keygen -t ed25519 -C "rebecca.castle2000@gmail.com" 
+  164  cat ~/.ssh/id_ed25519/.pub
+  165  cat ~/.ssh/.pub
+  166  cat ~/.ssh/key.pub.pub
+  167  ls -la ~/.ssh/
+  168* 
+  169  cat ~/.ssh/id_ed25519
+  170  cat ~/.ssh/id_ed25519.pub
+  171  ls -la ~/.ssh/
+  172  cat ~/.ssh/id_ed25519/.pub
+  173  cat ~/.ssh/key.pub.pub
+  174  cat ~/.ssh/key.pub
+  175  cat tmp/key.pub
+  176  cat tmp/id_ed25519.pub
+  177  history > ~/commands_history.txt
